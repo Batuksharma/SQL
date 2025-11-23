@@ -1,0 +1,28 @@
+USE startersql2;
+SELECT * FROM users;
+SELECT COUNT(*) from users;
+SELECT COUNT(*) from users WHERE gender = 'Female';
+SELECT MIN(salary) AS min_salary, MAX(salary) AS max_salary FROM users;
+
+SELECT SUM(salary) AS avg_salary FROM users;
+SELECT gender, AVG(salary) AS avg_salary FROM users GROUP BY gender;
+SELECT gender, SUM(salary) AS avg_salary FROM users GROUP BY gender;
+
+SELECT id,name,gender, LENGTH(name) AS name_len FROM users;
+SELECT id,gender, LOWER(name) as lower, CONCAT(LOWER(name),"5677") as username,YEAR(NOW()) as time, LENGTH(name) AS name_len FROM users;
+SELECT id,gender, LOWER(name) as lower, CONCAT(LOWER(name),"5677") as username,YEAR(date_of_birth) as yob, LENGTH(name) AS name_len FROM users;
+-- you can also use month and day accordingly
+
+SELECT name, DATEDIFF(CURDATE(),date_of_birth) as days from users;
+
+SELECT salary,
+	ROUND(salary) AS rounded,
+    FLOOR(salary) AS floored,
+    CEIL(salary) AS ceiled
+FROM users;
+
+SELECT id, MOD(id,2) AS remainder FROM users;
+
+SELECT name, gender,
+	IF(gender = 'Female','Yes','No') AS is_female
+FROM users;
