@@ -1,0 +1,37 @@
+CREATE DATABASE startersql;
+USE startersql;
+
+CREATE TABLE users(
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+email VARCHAR(100) UNIQUE NOT NULL,
+gender ENUM('Male','Female','Other'),
+date_of_birth DATE,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+SELECT * FROM users;
+SELECT id,email FROM users;
+
+DROP DATABASE world;
+RENAME TABLE users to customers;
+-- RENAME TABLE customers to users;
+
+ALTER TABLE users ADD COLUMN is_active BOOLEAN DEFAULT true;
+ALTER TABLE users DROP COLUMN is_active;
+ALTER TABLE users MODIFY COLUMN name VARCHAR(150);
+ALTER TABLE users MODIFY COLUMN email VARCHAR(100) AFTER id;
+ALTER TABLE users MODIFY COLUMN date_of_birth DATETIME FIRST;
+
+INSERT INTO users VALUES(
+'2003-01-06','1','batuk09.bs@gmail.com','Batuk Sharma','Male',DEFAULT
+);
+
+INSERT INTO users(name, email, gender, date_of_birth) VALUES(
+'Amit Singh','amitsingh@gmail.com','Male','2005-04-26'
+);
+
+INSERT INTO users(name, email, gender, date_of_birth) VALUES
+('Sumit Singh','sumit@gmail.com','Male','2005-04-12'),
+('Barry Singh','barry@gmail.com','Male','2005-04-25'),
+('Teji Singh','teji@gmail.com','Female','2005-04-20');
